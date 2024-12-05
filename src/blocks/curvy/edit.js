@@ -38,11 +38,11 @@ export default function Edit(props) {
 	const {className, ...blockProps} = useBlockProps();
 	return (
 		<>
-			<scection className={`${className} alignfull`} {...blockProps}>
+			<section className={`${className} alignfull`} {...blockProps}>
 				{
 					props.attributes.enableTopCurve && <Curve/>
 				}
-			</scection>
+			</section>
 			<InspectorControls>
 				<PanelBody title={__("Top Curve", metadata.textdomain )}>
 					<div style={{display: 'flex'}}>
