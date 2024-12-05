@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,8 +32,15 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Curvy – hello from the editor!', 'curvy' ) }
-		</p>
+		<>
+			<p { ...useBlockProps() }>
+				{ __( 'Curvy – hello from the editor!', 'curvy' ) }
+			</p>
+			<InspectorControls>
+				<PanelBody>
+					Test message
+				</PanelBody>
+			</InspectorControls>
+		</>
 	);
 }
