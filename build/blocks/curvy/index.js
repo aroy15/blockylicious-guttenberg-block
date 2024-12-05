@@ -56,7 +56,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-function Edit() {
+function Edit(props) {
+  console.log({
+    props
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
@@ -68,7 +71,14 @@ function Edit() {
           style: {
             display: 'flex'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            onChange: isChecked => {
+              props.setAttributes({
+                enableTopCurve: isChecked
+              });
+            },
+            checked: props.attributes.enableTopCurve
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Enable top curve", _block_json__WEBPACK_IMPORTED_MODULE_4__.textdomain)
           })]
         })
@@ -254,7 +264,7 @@ module.exports = window["wp"]["i18n"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/curvy","version":"0.1.0","title":"Curvy","category":"widgets","icon":"welcome-view-site","description":"Curvey shape dividers to make dividing page content more interesting.","example":{},"supports":{"html":false},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/curvy","version":"0.1.0","title":"Curvy","category":"widgets","icon":"welcome-view-site","description":"Curvey shape dividers to make dividing page content more interesting.","example":{},"supports":{"html":false},"attributes":{"enableTopCurve":{"type":"boolean","default":true}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
