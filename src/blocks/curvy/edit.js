@@ -31,14 +31,18 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 import metadata from './block.json';
+import { Curve } from './components/curve';
 
 export default function Edit(props) {
 	console.log({props})
+	const {className, ...blockProps} = useBlockProps();
 	return (
 		<>
-			<p { ...useBlockProps() }>
-				{ __( 'Curvy – hello from the editor!', metadata.textdomain ) }
-			</p>
+			<scection className={`${className} alignfull`} {...blockProps}>
+				{
+					props.attributes.enableTopCurve && <Curve/>
+				}
+			</scection>
 			<InspectorControls>
 				<PanelBody title={__("Top Curve", metadata.textdomain )}>
 					<div style={{display: 'flex'}}>
