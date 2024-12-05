@@ -37,7 +37,7 @@ export default function Edit() {
 				{ __( 'Curvy – hello from the editor!', 'curvy' ) }
 			</p>
 			<InspectorControls>
-				<PanelBody>
+				<PanelBody title="Top Curve">
 					Test message
 				</PanelBody>
 			</InspectorControls>
