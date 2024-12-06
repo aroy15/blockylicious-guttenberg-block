@@ -12,11 +12,22 @@
     "html": false,
     "color": {
       "background": true,
-      "link": false,
-      "text": false
+      "link": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true
     }
   },
   "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "background": "#ec4899"
+        }
+      }
+    },
     "enableTopCurve": {
       "type": "boolean",
       "default": true
