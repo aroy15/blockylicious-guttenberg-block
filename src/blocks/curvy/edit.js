@@ -11,12 +11,13 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, useSetting } from '@wordpress/block-editor';
 import { 
 	HorizontalRule, 
 	PanelBody, 
 	ToggleControl,
-	RangeControl
+	RangeControl,
+	ColorPalette
  } from '@wordpress/components';
 
 /**
@@ -41,6 +42,17 @@ import { Curve } from './components/curve';
 export default function Edit(props) {
 	console.log({props})
 	const {className, ...blockProps} = useBlockProps();
+
+	// Theme colors
+	const themeColors = useSetting( 'color.palette' );
+
+	// custom colors including theme colors
+	const colors = [
+		...themeColors,
+        { name: 'gray', color: '#eee' },
+        { name: 'black', color: '#000' },
+        { name: 'blue', color: '#00f' },
+    ];
 	return (
 		<>
 			<section className={`${className} alignfull`} {...blockProps}>
@@ -51,6 +63,7 @@ export default function Edit(props) {
 						width={props.attributes.topWidth}
 						flipX={props.attributes.topFlipX}
 						flipY={props.attributes.topFlipY}
+						color={props.attributes.topColor}
 					/>
 				}
 			</section>
@@ -105,6 +118,20 @@ export default function Edit(props) {
 								})
 							}} checked={props.attributes.topFlipY}/>
 							<span>{__("Flip Vertically ", metadata.textdomain )}</span>
+						</div>
+						<HorizontalRule/>
+						<div>
+							<label>{__("Curve Color", metadata.textdomain)}</label>
+							<ColorPalette 
+								// disableCustomColors
+								colors={colors}
+								value={props.attributes.topColor} 
+								onChange={(newValue) => {
+									props.setAttributes({
+										topColor: newValue
+									})
+								}}
+							/>
 						</div>
 					</>
 					}
