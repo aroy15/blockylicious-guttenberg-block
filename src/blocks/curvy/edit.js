@@ -39,6 +39,7 @@ import './editor.scss';
 import metadata from './block.json';
 import { Curve } from './components/curve';
 import { TopCurveSettings } from './components/TopCurveSettings';
+import { BottomCurveSettings } from './components/BottomCurveSettings';
 
 export default function Edit(props) {
 	const {className, ...blockProps} = useBlockProps();
@@ -54,6 +55,17 @@ export default function Edit(props) {
 						flipX={props.attributes.topFlipX}
 						flipY={props.attributes.topFlipY}
 						color={props.attributes.topColor}
+					/>
+				}
+				{
+					props.attributes.enableBottomCurve && 
+					<Curve 
+						isBottom
+						height={props.attributes.bottomHeight} 
+						width={props.attributes.bottomWidth}
+						flipX={props.attributes.bottomFlipX}
+						flipY={props.attributes.bottomFlipY}
+						color={props.attributes.bottomColor}
 					/>
 				}
 			</section>
@@ -73,8 +85,25 @@ export default function Edit(props) {
 							attributes={props.attributes}
 							setAttributes={props.setAttributes}
 						/>
-					}
+					}					
 				</PanelBody>
+				<PanelBody title={__("Bottom Curve", metadata.textdomain )}>
+					<div style={{display: 'flex'}}>
+						<ToggleControl onChange={(isChecked) => {
+							props.setAttributes({
+								enableBottomCurve: isChecked
+							})
+						}} checked={props.attributes.enableBottomCurve}/>
+						<span>{__("Enable bottom curve", metadata.textdomain )}</span>
+					</div>
+					{ 
+						props.attributes.enableBottomCurve &&
+						<BottomCurveSettings
+							attributes={props.attributes}
+							setAttributes={props.setAttributes}
+						/>
+					}					
+				</PanelBody>				
 			</InspectorControls>
 		</>
 	);
