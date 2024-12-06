@@ -45,7 +45,13 @@ export default function Edit(props) {
 		<>
 			<section className={`${className} alignfull`} {...blockProps}>
 				{
-					props.attributes.enableTopCurve && <Curve height={props.attributes.topHeight} width={props.attributes.topWidth}/>
+					props.attributes.enableTopCurve && 
+					<Curve 
+						height={props.attributes.topHeight} 
+						width={props.attributes.topWidth}
+						flipX={props.attributes.topFlipX}
+						flipY={props.attributes.topFlipY}
+					/>
 				}
 			</section>
 			<InspectorControls>
