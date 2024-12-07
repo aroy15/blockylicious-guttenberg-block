@@ -7,7 +7,6 @@
 	"category": "blockylicious",
 	"icon": "welcome-view-site",
 	"description": "Curvey shape dividers to make dividing page content more interesting.",
-	"example": {},
 	"supports": {
 		"html": false,
 		"color": {
@@ -37,6 +36,22 @@
 			}
 		}
 	],
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/heading",
+				"attributes": {
+					"content": "This is a heading"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "This is an example curvy block"
+				}
+			}
+		]
+	},
 	"attributes": {
 		"style": {
 			"type": "object",
