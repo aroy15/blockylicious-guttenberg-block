@@ -625,7 +625,24 @@ __webpack_require__.r(__webpack_exports__);
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
     src: _assets_icon_svg__WEBPACK_IMPORTED_MODULE_5__["default"]
-  })
+  }),
+  transforms: {
+    from: [{
+      type: "block",
+      blocks: ["core/paragraph"],
+      transform: attributes => {
+        //console.log({attributes});
+        return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)("blockylicious/curvy", {}, [(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)("core/paragraph", attributes)]);
+      }
+    }, {
+      type: "block",
+      blocks: ["core/heading"],
+      transform: attributes => {
+        //console.log({attributes});
+        return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)("blockylicious/curvy", {}, [(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)("core/heading", attributes)]);
+      }
+    }]
+  }
 });
 
 /***/ }),
