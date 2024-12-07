@@ -15,6 +15,7 @@
   left: 0;
   width: 100%;
   overflow: hidden;
+  z-index: 2;
 }
 .wp-block-blockylicious-curvy .curve.top-curve {
   top: 0;
