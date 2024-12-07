@@ -342,7 +342,7 @@ function Edit(props) {
         flipX: props.attributes.topFlipX,
         flipY: props.attributes.topFlipY,
         color: props.attributes.topColor
-      }), props.attributes.enableBottomCurve && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_curve__WEBPACK_IMPORTED_MODULE_5__.Curve, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {}), props.attributes.enableBottomCurve && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_curve__WEBPACK_IMPORTED_MODULE_5__.Curve, {
         isBottom: true,
         height: props.attributes.bottomHeight,
         width: props.attributes.bottomWidth,
