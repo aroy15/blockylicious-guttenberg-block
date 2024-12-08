@@ -14,20 +14,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/clickyGroup/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_parseValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/parseValue */ "./src/utils/parseValue.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/clickyGroup/editor.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-function Edit() {
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)();
+
+function Edit(props) {
+  const blockGap = (0,_utils_parseValue__WEBPACK_IMPORTED_MODULE_1__.parseValue)(props.attributes.style?.spacing?.blockGap || "");
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
+    style: {
+      gap: blockGap
+    }
+  });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useInnerBlocksProps)(blockProps, {
     template: [["blockylicious/clicky-button", {}]],
     allowedBlocks: ["blockylicious/clicky-button"]
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       ...innerBlocksProps
     })
   });
@@ -113,6 +120,28 @@ function Save() {
 
 /***/ }),
 
+/***/ "./src/utils/parseValue.js":
+/*!*********************************!*\
+  !*** ./src/utils/parseValue.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   parseValue: () => (/* binding */ parseValue)
+/* harmony export */ });
+const parseValue = value => {
+  if (value.indexOf("var:") === 0) {
+    //Current input is var:preset|spacing|40
+    const varValue = value.split(":")[1].split("|").join("--");
+    // The result is preset--spacing--40
+    return `var(--wp--${varValue})`;
+  }
+  return value;
+};
+
+/***/ }),
+
 /***/ "./src/blocks/clickyGroup/editor.scss":
 /*!********************************************!*\
   !*** ./src/blocks/clickyGroup/editor.scss ***!
@@ -173,7 +202,7 @@ module.exports = window["wp"]["blocks"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-group","version":"0.1.0","title":"Clicky Group","category":"blockylicious","icon":"smiley","description":"A group of Clicky buttons that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-group","version":"0.1.0","title":"Clicky Group","category":"blockylicious","icon":"smiley","description":"A group of Clicky buttons that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false,"spacing":{"blockGap":true}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 
