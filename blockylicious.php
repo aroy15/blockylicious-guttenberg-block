@@ -13,12 +13,11 @@
  *
  * @package CreateBlock
  */
+namespace BlockyliciousPlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
-
 
 function convert_custom_properties($value)
 {
@@ -60,9 +59,9 @@ function create_custom_block_category($categories) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function create_block_blockylicious_block_init() {
-	add_filter('block_categories_all', 'create_custom_block_category');
+	add_filter('block_categories_all', 'BlockyliciousPlugin\create_custom_block_category');
 	register_block_type( __DIR__ . '/build/blocks/curvy' );
 	register_block_type( __DIR__ . '/build/blocks/clickyGroup');
 	register_block_type( __DIR__ . '/build/blocks/clickyButton');
 }
-add_action( 'init', 'create_block_blockylicious_block_init' );
+add_action( 'init', 'BlockyliciousPlugin\create_block_blockylicious_block_init' );
