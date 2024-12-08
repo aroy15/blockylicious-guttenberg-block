@@ -8,7 +8,10 @@ export default function Edit() {
 	const blockProps = useBlockProps();
 	return (
 		<div {...blockProps}>
-			<InnerBlocks allowedBlocks={["blockylicious/clicky-button"]}/>
+			<InnerBlocks
+				template={[["blockylicious/clicky-button", {}]]}
+				allowedBlocks={["blockylicious/clicky-button"]}
+			/>
 		</div>
 	)
 }
