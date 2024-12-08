@@ -16,52 +16,49 @@
 namespace BlockyliciousPlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	die('Silence is golden.');
 }
 
-function convert_custom_properties($value)
-{
-	$prefix     = 'var:';
-	$prefix_len = strlen($prefix);
-	$token_in   = '|';
-	$token_out  = '--';
-	if (str_starts_with($value, $prefix)) {
-		$unwrapped_name = str_replace(
-			$token_in,
-			$token_out,
-			substr($value, $prefix_len)
-		);
-		$value          = "var(--wp--$unwrapped_name)";
+final class Blockylicious {
+	static function init() {
+		add_action('init', function(){
+			add_filter('block_categories_all', function($categories) {
+				array_unshift($categories, [
+					'slug' => 'blockylicious',
+					'title' => 'Blockylicious'
+				]);
+			
+				// // Category will show in the last
+				// array_push($categories, [
+				// 	'slug' => 'blockylicious',
+				// 	'title' => 'Blockylicious'
+				// ]);
+				return $categories;
+			});
+			register_block_type( __DIR__ . '/build/blocks/curvy' );
+			register_block_type( __DIR__ . '/build/blocks/clickyGroup');
+			register_block_type( __DIR__ . '/build/blocks/clickyButton');
+		});
 	}
 
-	return $value;
+	static function convert_custom_properties($value)
+	{
+		$prefix     = 'var:';
+		$prefix_len = strlen($prefix);
+		$token_in   = '|';
+		$token_out  = '--';
+		if (str_starts_with($value, $prefix)) {
+			$unwrapped_name = str_replace(
+				$token_in,
+				$token_out,
+				substr($value, $prefix_len)
+			);
+			$value          = "var(--wp--$unwrapped_name)";
+		}
+	
+		return $value;
+	}
 }
-function create_custom_block_category($categories) {
 
-	array_unshift($categories, [
-		'slug' => 'blockylicious',
-		'title' => 'Blockylicious'
-	]);
+Blockylicious::init();
 
-	// // Category will show in the last
-	// array_push($categories, [
-	// 	'slug' => 'blockylicious',
-	// 	'title' => 'Blockylicious'
-	// ]);
-	return $categories;
-}
-
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function create_block_blockylicious_block_init() {
-	add_filter('block_categories_all', 'BlockyliciousPlugin\create_custom_block_category');
-	register_block_type( __DIR__ . '/build/blocks/curvy' );
-	register_block_type( __DIR__ . '/build/blocks/clickyGroup');
-	register_block_type( __DIR__ . '/build/blocks/clickyButton');
-}
-add_action( 'init', 'BlockyliciousPlugin\create_block_blockylicious_block_init' );
