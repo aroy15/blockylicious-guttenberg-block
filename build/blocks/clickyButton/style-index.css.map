@@ -1,0 +1,1 @@
+{"version":3,"file":"blocks/clickyButton/style-index.css","mappings":";;;AAAA;EACC;EACA;EACA;EACA;AACD,C","sources":["webpack://blockylicious/./src/blocks/clickyButton/style.scss"],"sourcesContent":[".wp-block-blockylicious-clicky-button{\r\n\ttext-decoration: none;\t\r\n\tbackground: black;\r\n\tpadding: 10px 30px;\r\n\tcolor: white;\r\n}"],"names":[],"sourceRoot":""}
