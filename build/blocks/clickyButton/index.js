@@ -89,6 +89,10 @@ function Edit(props) {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Destination", _block_json__WEBPACK_IMPORTED_MODULE_4__.textdomain),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
           label: "Type",
+          value: props.attributes.postType,
+          onChange: newValue => props.setAttributes({
+            postType: newValue
+          }),
           options: [{
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Select a post type...", _block_json__WEBPACK_IMPORTED_MODULE_4__.textdomain),
             value: ""
@@ -289,7 +293,7 @@ module.exports = window["wp"]["i18n"];
   \********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-button","version":"0.1.0","title":"Clicky Button","category":"blockylicious","icon":"smiley","description":"A call to action button that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false,"color":{"background":true,"text":true,"link":false,"gradients":true,"enableContrastChekcer":true},"spacing":{"padding":true}},"attributes":{"labelText":{"type":"string","default":""},"style":{"type":"object","default":{"color":{"background":"#000000","text":"#ffffff"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"30px","right":"30px"}}}}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php","parent":["blockylicious/clicky-group"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-button","version":"0.1.0","title":"Clicky Button","category":"blockylicious","icon":"smiley","description":"A call to action button that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false,"color":{"background":true,"text":true,"link":false,"gradients":true,"enableContrastChekcer":true},"spacing":{"padding":true}},"attributes":{"postType":{"type":"string","default":""},"labelText":{"type":"string","default":""},"style":{"type":"object","default":{"color":{"background":"#000000","text":"#ffffff"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"30px","right":"30px"}}}}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php","parent":["blockylicious/clicky-group"]}');
 
 /***/ })
 

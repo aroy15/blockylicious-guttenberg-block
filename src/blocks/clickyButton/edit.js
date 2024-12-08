@@ -21,15 +21,22 @@ export default function Edit(props) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__("Destination", metadata.textdomain)}>
-					<SelectControl label="Type" options={[{
-						label: __("Select a post type...", metadata.textdomain),
-						value: ""
-					}, ...(postTypes || []).map(postType => (
-						{
-							label: postType?.labels.singular_name,
-							value: postType?.slug
-						}
-					))]}/>
+					<SelectControl 
+						label="Type"
+						value={props.attributes.postType}
+						onChange={newValue => props.setAttributes({
+							postType: newValue
+						})}
+						options={[{
+							label: __("Select a post type...", metadata.textdomain),
+							value: ""
+						}, ...(postTypes || []).map(postType => (
+							{
+								label: postType?.labels.singular_name,
+								value: postType?.slug
+							}
+						))]}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
