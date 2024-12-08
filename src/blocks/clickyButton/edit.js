@@ -1,8 +1,16 @@
 import { 
-	useBlockProps
+	useBlockProps,
+	RichText
 } from '@wordpress/block-editor';
 
-export default function Edit() {
+export default function Edit(props) {
 	const blockProps = useBlockProps();
-	return <div {...blockProps}>Clicky Button Edit</div>
+	return <div {...blockProps}>
+		<RichText 
+			placeholder="Label text" value={props.attributes.labelText}
+			onChange={newValue => props.setAttributes({
+				labelText: newValue
+			})}
+		/>
+	</div>
 }
