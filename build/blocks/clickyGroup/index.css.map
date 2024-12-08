@@ -1,0 +1,1 @@
+{"version":3,"file":"blocks/clickyGroup/index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://blockylicious/./src/blocks/clickyGroup/editor.scss"],"sourcesContent":[".wp-block-blockylicious-clicky-group{\r\n\tpadding: 40px;\r\n\tborder: 1px solid red;\r\n}"],"names":[],"sourceRoot":""}
