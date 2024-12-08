@@ -25,6 +25,10 @@
       "type": "string",
       "default": ""
     },
+    "linkedPost": {
+      "type": "number",
+      "default": null
+    },
     "labelText": {
       "type": "string",
       "default": ""
