@@ -44,5 +44,6 @@ function create_block_blockylicious_block_init() {
 	add_filter('block_categories_all', 'create_custom_block_category');
 	register_block_type( __DIR__ . '/build/blocks/curvy' );
 	register_block_type( __DIR__ . '/build/blocks/clickyGroup');
+	register_block_type( __DIR__ . '/build/blocks/clickyButton');
 }
 add_action( 'init', 'create_block_blockylicious_block_init' );
