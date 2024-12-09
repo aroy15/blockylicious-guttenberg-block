@@ -1,6 +1,7 @@
 import {
 	useBlockProps,
-	BlockControls
+	BlockControls,
+	InnerBlocks
 } from '@wordpress/block-editor';
 import {
 	ToolbarGroup,
@@ -19,7 +20,13 @@ export default function Edit(props) {
 	return (
 		<>
 			<div {...blockProps}>
-				A Message
+				{!!editMode &&
+					<div className="edit-mode">
+						<span className="piccy-label">{__("Piccy image gallery", metadata.textdomain)}</span>
+						<InnerBlocks/>
+					</div>
+				}
+				{!editMode && <div className="preview-mode">Preview mode</div>}
 			</div>
 			<BlockControls>
 				<ToolbarGroup>
