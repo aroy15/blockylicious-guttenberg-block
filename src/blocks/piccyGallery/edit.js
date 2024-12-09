@@ -23,7 +23,9 @@ export default function Edit(props) {
 				{!!editMode &&
 					<div className="edit-mode">
 						<span className="piccy-label">{__("Piccy image gallery", metadata.textdomain)}</span>
-						<InnerBlocks/>
+						<InnerBlocks
+							allowedBlocks={["blockylicious/piccy-image"]}
+						/>
 					</div>
 				}
 				{!editMode && <div className="preview-mode">Preview mode</div>}
