@@ -8,10 +8,7 @@
   "icon": "images-alt2",
   "description": "An interactive image gallery",
   "supports": {
-    "html": false,
-    "spacing": {
-      "blockGap": true
-    }
+    "html": false
   },
   "textdomain": "blockylicious",
   "editorScript": "file:./index.js",

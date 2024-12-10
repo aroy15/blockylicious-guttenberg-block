@@ -15,14 +15,14 @@ export default function Edit(props) {
 		})
 		return data?.filter(item => item.visibility.show_in_nav_menus && item.visibility.show_ui);
 	})
-	console.log({postTypes})
+	
 	const posts = useSelect((select) => {
 		const data = select("core").getEntityRecords("postType", props.attributes.postType, {
 			per_page: -1
 		})
 		return data;
 	}, [props.attributes.postType])
-	console.log(posts)
+	
 	const blockProps = useBlockProps();
 	return (
 		<>
