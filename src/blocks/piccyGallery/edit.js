@@ -62,9 +62,10 @@ export default function Edit(props) {
 								onClick={() => {
 									setPreviewModeImage({
 										imageId: innerBlock.attributes.imageId,
-										clientId: innerBlock.clientId
+										blockId: innerBlock.clientId
 									})
 								}}
+								className={`thumb ${innerBlock.clientId === previewModeImage.blockId ? "selected" : ""}`}
 							/>)
 							}
 						</div>

@@ -1,0 +1,17 @@
+.wp-block-blockylicious-piccy-gallery{
+	.thumb{
+		border-radius: 12px;
+		border: 5px solid transparent;
+		cursor: pointer;
+		filter: brightness(0.5);
+		transition: 0.2s ease all;
+		&:hover{
+			filter: brightness(1)
+		}
+		&.selected{
+			filter: brightness(1);
+			border-color: blue;
+			transform: scale(1.05);
+		}
+	}
+}

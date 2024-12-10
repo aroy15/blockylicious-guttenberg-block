@@ -77,9 +77,10 @@ function Edit(props) {
             onClick: () => {
               setPreviewModeImage({
                 imageId: innerBlock.attributes.imageId,
-                clientId: innerBlock.clientId
+                blockId: innerBlock.clientId
               });
-            }
+            },
+            className: `thumb ${innerBlock.clientId === previewModeImage.blockId ? "selected" : ""}`
           }, innerBlock.clientId))
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_ImageThumbnail__WEBPACK_IMPORTED_MODULE_6__.ImageThumbnail, {
           imageId: previewModeImage?.imageId,
@@ -207,7 +208,8 @@ const ImageThumbnail = props => {
       objectFit: "cover"
     },
     src: image.source_url,
-    onClick: props.onClick
+    onClick: props.onClick,
+    className: props.className
   }) : null;
 };
 

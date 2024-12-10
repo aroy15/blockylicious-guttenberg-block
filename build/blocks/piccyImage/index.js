@@ -636,7 +636,8 @@ const ImageThumbnail = props => {
       objectFit: "cover"
     },
     src: image.source_url,
-    onClick: props.onClick
+    onClick: props.onClick,
+    className: props.className
   }) : null;
 };
 

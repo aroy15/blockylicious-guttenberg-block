@@ -13,6 +13,7 @@ export const ImageThumbnail = (props) => {
 			}} 
 			src={image.source_url}
 			onClick={props.onClick}
+			className={props.className}
 		/> 
 		: 
 		null
