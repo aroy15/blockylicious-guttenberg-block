@@ -311,7 +311,7 @@ module.exports = window["wp"]["blocks"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-group","version":"0.1.0","title":"Clicky Group","category":"blockylicious","icon":"smiley","description":"A group of Clicky buttons that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false,"spacing":{"blockGap":true}},"attributes":{"justifyContent":{"type":"string","enum":["left","center","right"],"default":"left"}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blockylicious/clicky-group","version":"0.1.0","title":"Clicky Group","category":"blockylicious","icon":"smiley","description":"A group of Clicky buttons that link to a particular post of page rather than hardcoding the destination URL.","supports":{"html":false,"spacing":{"blockGap":true}},"attributes":{"justifyContent":{"type":"string","enum":["left","center","right"],"default":"left"}},"textdomain":"blockylicious","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ })
 
