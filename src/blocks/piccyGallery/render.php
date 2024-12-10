@@ -5,4 +5,7 @@
 	<div class="gallery-thubmnails">
 		<?php echo $content; ?>
 	</div>
+	<div>
+		<img class="image-preview"/>
+	</div>
 </div>
