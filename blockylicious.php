@@ -43,6 +43,27 @@ final class Blockylicious {
 			register_block_type( __DIR__ . '/build/blocks/clickyButton');
 			register_block_type( __DIR__ . '/build/blocks/piccyGallery');
 			register_block_type( __DIR__ . '/build/blocks/piccyImage');
+
+			register_block_pattern_category('blockylicous', array(
+				'label' => __('Blockylicious', 'blockylicous')
+			));
+			register_block_pattern('blockylicious/call-to-action-block', array(
+				'categories' => array('call-to-action', 'blockylicous'),
+				'title' => __('Blockylicous Call to Action', 'blockylicious'),
+				'description' => __('A heading, paragraph, and clicky button block', 'blockylicious'),
+				'content' => '<!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="wp-block-heading has-text-align-center">Lorem content title</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">Lorem ipsum content</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:blockylicious/clicky-group {"justifyContent":"center"} -->
+				<!-- wp:blockylicious/clicky-button {"labelText":"Call To Action","style":{"color":{"background":"#000000","text":"#ffffff"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"20px","right":"20px"}}}} /-->
+				<!-- /wp:blockylicious/clicky-group -->'
+
+			));
 		});
 	}
 
