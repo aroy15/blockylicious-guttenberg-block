@@ -12,6 +12,8 @@ import {
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { useState } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import { ImageThumbnail } from '../../components/ImageThumbnail';
 
 import './editor.scss';
 
@@ -27,6 +29,14 @@ export default function Edit(props) {
 		}
 	);
 	const [editMode, setEditMode] = useState(true);
+	const innerBlocks = useSelect((select) => {
+		const { getBlocksByClientId } = select("core/block-editor");
+		const block = getBlocksByClientId(props.clientId)?.[0];
+		return block?.innerBlocks;
+	}, [props.clientId]);
+
+	console.log({innerBlocks});
+
 	return (
 		<>
 			<div {...blockProps}>
@@ -37,7 +47,16 @@ export default function Edit(props) {
 						<div {...innerBlocksProps}/>
 					</div>
 				}
-				{!editMode && <div className="preview-mode">Preview mode</div>}
+				{!editMode && 
+					<div className="preview-mode">
+						{
+						(innerBlocks || []).map(innerBlock => <ImageThumbnail
+							key={innerBlock.clientId}
+							imageId={innerBlock.attributes.imageId}
+						/>)
+						}
+					</div>
+				}
 			</div>
 			<BlockControls>
 				<ToolbarGroup>

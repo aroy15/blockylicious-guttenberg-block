@@ -3,7 +3,6 @@ import {
 	MediaUploadCheck,
 	MediaUpload
 } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 // import { Icon } from '@wordpress/components';
@@ -15,16 +14,15 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 /*===X=====X=== */
+import { ImageThumbnail } from '../../components/ImageThumbnail';
+import { useImage } from '../../hooks/useImage';
 
 
 import './editor.scss';
 
 export default function Edit(props) {
 	const blockProps = useBlockProps();
-	const image = useSelect((select) => {
-		const data = select("core").getEntityRecord("postType", "attachment", props.attributes.imageId);
-		return data;
-	}, [props.attributes.imageId]); //second argument is a dependancy array
+	const image = useImage(props.attributes.imageId);
 
 	const imageSelected = !!props.attributes.imageId && !!image?.source_url;
 
@@ -32,7 +30,7 @@ export default function Edit(props) {
 	return (
 		<div {...blockProps}>
 			{
-				!!imageSelected && <img style={{display: "block", height:150, width:"100%", objectFit: "cover"}} src={image.source_url}/>
+				!!imageSelected && <ImageThumbnail imageId={props.attributes.imageId}/>
 			}
 			{
 				!imageSelected && (
