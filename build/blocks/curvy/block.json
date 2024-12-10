@@ -56,9 +56,6 @@
     "style": {
       "type": "object",
       "default": {
-        "color": {
-          "background": "#ec4899"
-        },
         "spacing": {
           "padding": {
             "top": "80px",
