@@ -631,11 +631,12 @@ const ImageThumbnail = props => {
   return image?.source_url ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
     style: {
       display: "block",
-      height: 150,
+      height: props.height || 150,
       width: "100%",
       objectFit: "cover"
     },
-    src: image.source_url
+    src: image.source_url,
+    onClick: props.onClick
   }) : null;
 };
 

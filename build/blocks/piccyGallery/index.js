@@ -53,8 +53,9 @@ function Edit(props) {
     const block = getBlocksByClientId(props.clientId)?.[0];
     return block?.innerBlocks;
   }, [props.clientId]);
-  console.log({
-    innerBlocks
+  const [previewModeImage, setPreviewModeImage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)({
+    imageId: innerBlocks?.[0]?.attributes?.imageId,
+    blockId: innerBlocks?.[0]?.clientId
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -67,11 +68,23 @@ function Edit(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           ...innerBlocksProps
         })]
-      }), !editMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-        className: "preview-mode",
-        children: (innerBlocks || []).map(innerBlock => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_ImageThumbnail__WEBPACK_IMPORTED_MODULE_6__.ImageThumbnail, {
-          imageId: innerBlock.attributes.imageId
-        }, innerBlock.clientId))
+      }), !editMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "preview-mode",
+          children: (innerBlocks || []).map(innerBlock => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_ImageThumbnail__WEBPACK_IMPORTED_MODULE_6__.ImageThumbnail, {
+            imageId: innerBlock.attributes.imageId,
+            height: 75,
+            onClick: () => {
+              setPreviewModeImage({
+                imageId: innerBlock.attributes.imageId,
+                clientId: innerBlock.clientId
+              });
+            }
+          }, innerBlock.clientId))
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_ImageThumbnail__WEBPACK_IMPORTED_MODULE_6__.ImageThumbnail, {
+          imageId: previewModeImage?.imageId,
+          height: "initial"
+        })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.BlockControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToolbarGroup, {
@@ -189,11 +202,12 @@ const ImageThumbnail = props => {
   return image?.source_url ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
     style: {
       display: "block",
-      height: 150,
+      height: props.height || 150,
       width: "100%",
       objectFit: "cover"
     },
-    src: image.source_url
+    src: image.source_url,
+    onClick: props.onClick
   }) : null;
 };
 

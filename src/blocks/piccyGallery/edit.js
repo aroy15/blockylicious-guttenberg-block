@@ -28,14 +28,18 @@ export default function Edit(props) {
 			allowedBlocks: ["blockylicious/piccy-image"]
 		}
 	);
+
 	const [editMode, setEditMode] = useState(true);
 	const innerBlocks = useSelect((select) => {
 		const { getBlocksByClientId } = select("core/block-editor");
 		const block = getBlocksByClientId(props.clientId)?.[0];
 		return block?.innerBlocks;
 	}, [props.clientId]);
-
-	console.log({innerBlocks});
+	
+	const [previewModeImage, setPreviewModeImage] = useState({
+		imageId: innerBlocks?.[0]?.attributes?.imageId,
+		blockId: innerBlocks?.[0]?.clientId
+	});
 
 	return (
 		<>
@@ -48,14 +52,27 @@ export default function Edit(props) {
 					</div>
 				}
 				{!editMode && 
-					<div className="preview-mode">
-						{
-						(innerBlocks || []).map(innerBlock => <ImageThumbnail
-							key={innerBlock.clientId}
-							imageId={innerBlock.attributes.imageId}
-						/>)
-						}
-					</div>
+					<>
+						<div className="preview-mode">
+							{
+							(innerBlocks || []).map(innerBlock => <ImageThumbnail
+								key={innerBlock.clientId}
+								imageId={innerBlock.attributes.imageId}
+								height={75}
+								onClick={() => {
+									setPreviewModeImage({
+										imageId: innerBlock.attributes.imageId,
+										clientId: innerBlock.clientId
+									})
+								}}
+							/>)
+							}
+						</div>
+						<ImageThumbnail 
+							imageId={previewModeImage?.imageId}
+							height="initial"
+						/>
+					</>
 				}
 			</div>
 			<BlockControls>

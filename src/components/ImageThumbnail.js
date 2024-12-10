@@ -7,11 +7,12 @@ export const ImageThumbnail = (props) => {
 		<img 
 			style={{
 				display: "block", 
-				height:150, 
+				height: props.height || 150, 
 				width:"100%", 
 				objectFit: "cover"
 			}} 
 			src={image.source_url}
+			onClick={props.onClick}
 		/> 
 		: 
 		null
