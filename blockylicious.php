@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Blockylicious
+ * Plugin Name:       blockylicious
  * Description:       A plugin of group blocks.
  * Requires at least: 6.6
  * Requires PHP:      7.2
@@ -23,6 +23,8 @@ final class Blockylicious {
 	static function init() {
 		add_action('enqueue_block_assets', function() {
 			wp_enqueue_style("dashicons");
+			$style_url = plugins_url("build/style-index.css",  __FILE__);
+			wp_enqueue_style('blockylicious-style', $style_url, array());
 		});
 		add_action('init', function(){
 			add_filter('block_categories_all', function($categories) {
@@ -64,6 +66,14 @@ final class Blockylicious {
 				<!-- /wp:blockylicious/clicky-group -->'
 
 			));
+
+
+			//enqueuing new script file
+			$script_url = plugins_url("./build/index.js", __FILE__);
+			wp_enqueue_script('blockylicious-index', $script_url, array('wp-blocks', 'wp-element', 'wp-editor'));
+
+			$style_url = plugins_url("build/style-index.css",  __FILE__);
+			wp_enqueue_style('blockylicious-style', $style_url, array());
 		});
 	}
 
