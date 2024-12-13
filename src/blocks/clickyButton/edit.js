@@ -90,6 +90,15 @@ export default function Edit(props) {
 							})}
 						/>
 					}
+					<div style={{display: 'flex'}}>
+						<ToggleControl
+							checked={props.attributes.linkNewTab}
+							onChange={isChecked => props.setAttributes({
+								linkNewTab:isChecked
+							})}
+						/>
+						<span>{__("Open with new tab",  metadata.textdomain)}</span>
+					</div>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>

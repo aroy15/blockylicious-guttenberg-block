@@ -37,6 +37,10 @@
       "type": "string",
       "default": ""
     },
+    "linkNewTab": {
+      "type": "boolean",
+      "default": false
+    },
     "labelText": {
       "type": "string",
       "default": ""
