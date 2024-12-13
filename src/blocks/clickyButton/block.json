@@ -29,6 +29,14 @@
 			"type": "number",
 			"default": null
 		},
+		"enableCustomLink":{
+			"type": "boolean",
+			"default": false
+		},
+		"customLink": {
+			"type": "string",
+			"default": ""
+		},
 		"labelText": {
 			"type": "string",
 			"default": ""

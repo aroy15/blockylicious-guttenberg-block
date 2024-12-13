@@ -3,7 +3,12 @@ import {
 	RichText,
 	InspectorControls
 } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from "@wordpress/components";
+import { 
+	PanelBody, 
+	SelectControl, 
+	ToggleControl ,
+	TextControl
+} from "@wordpress/components";
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
@@ -28,24 +33,27 @@ export default function Edit(props) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__("Destination", metadata.textdomain)}>
-					<SelectControl 
-						label="Type"
-						value={props.attributes.postType}
-						onChange={newValue => props.setAttributes({
-							postType: newValue
-						})}
-						options={[{
-							label: __("Select a post type...", metadata.textdomain),
-							value: ""
-						}, ...(postTypes || []).map(postType => (
-							{
-								label: postType?.labels.singular_name,
-								value: postType?.slug
-							}
-						))]}
-					/>
 					{
-						!!props.attributes.postType && 
+						!props.attributes.enableCustomLink && 
+						<SelectControl 
+							label="Type"
+							value={props.attributes.postType}
+							onChange={newValue => props.setAttributes({
+								postType: newValue
+							})}
+							options={[{
+								label: __("Select a post type...", metadata.textdomain),
+								value: ""
+							}, ...(postTypes || []).map(postType => (
+								{
+									label: postType?.labels.singular_name,
+									value: postType?.slug
+								}
+							))]}
+						/>
+					}
+					{
+						(!!props.attributes.postType && !props.attributes.enableCustomLink) &&
 						<SelectControl 
 							label={`Linked ${props.attributes.postType}`}
 							value={props.attributes.linkedPost}
@@ -61,6 +69,25 @@ export default function Edit(props) {
 									value: post?.id
 								}
 							))]}
+						/>
+					}
+					<div style={{display: 'flex'}}>
+						<ToggleControl
+							checked={props.attributes.enableCustomLink}
+							onChange={isChecked => props.setAttributes({
+								enableCustomLink:isChecked
+							})}
+						/>
+						<span>{__("Custom URL",  metadata.textdomain)}</span>
+					</div>
+					{
+						props.attributes.enableCustomLink && 
+						<TextControl
+							label={__("Input the custom URL", metadata.textdomain)}
+							value={props.attributes.customLink}
+							onChange={newURL => props.setAttributes({
+								customLink: newURL
+							})}
 						/>
 					}
 				</PanelBody>
